@@ -1,0 +1,2 @@
+container_images:
+  - imagename: quay.io/podified-master-centos9/openstack-valkey:current-podified

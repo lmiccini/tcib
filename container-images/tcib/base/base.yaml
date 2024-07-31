@@ -1,6 +1,9 @@
 tcib_actions:
 - run: if [ -f "/etc/yum.repos.d/ubi.repo" ]; then rm -f /etc/yum.repos.d/ubi.repo && dnf clean all && rm -rf /var/cache/dnf; fi
 - run: >-
+    dnf reinstall -y centos-gpg-keys &&
+    cat /etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial &&
+    dnf install epel-release -y &&
     dnf install -y crudini &&
     crudini --del /etc/dnf/dnf.conf main override_install_langs &&
     crudini --set /etc/dnf/dnf.conf main clean_requirements_on_remove True &&
